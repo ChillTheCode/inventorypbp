@@ -1,5 +1,11 @@
 import 'package:flutter/material.dart';
 
+
+
+import 'package:inventorypbp/widgets/left_drawer.dart';
+
+  import 'package:inventorypbp/screens/shoplist_form.dart';
+
 class MyHomePage extends StatelessWidget {
     MyHomePage({Key? key}) : super(key: key);
     final List<ShopItem> items = [
@@ -9,12 +15,16 @@ class MyHomePage extends StatelessWidget {
     ];
     @override
     Widget build(BuildContext context) {
-        return Scaffold(
-            appBar: AppBar(
-                title: const Text(
-                'Inventory',
-                ),
-            ),
+return Scaffold(
+  appBar: AppBar(
+    title: const Text(
+      'Inventory',
+    ),
+    backgroundColor: Color.fromARGB(255, 57, 237, 177),
+    foregroundColor: Colors.white,
+  ),
+  // Masukkan drawer sebagai parameter nilai drawer dari widget Scaffold
+  drawer: const LeftDrawer(),
             body: SingleChildScrollView(
                 // Widget wrapper yang dapat discroll
                 child: Padding(

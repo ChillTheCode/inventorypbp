@@ -71,3 +71,115 @@ Kemudian, dalam kelas MyHomePage, kita perlu menginisialisasi setiap objek ShopI
 Terakhir, dalam kelas ShopCard, gunakan properti color dari objek item untuk menentukan warna latar belakang dari widget Material, sehingga setiap tombol akan memiliki warna yang berbeda sesuai dengan properti color dari ShopItem.
 
 Setelah menjalankan langkah-langkah di atas, kita akan memiliki proyek Flutter dengan struktur yang rapi, serta sebuah halaman menu yang menampilkan daftar barang yang dijual. Saat tombol pada card ditekan, akan muncul pemberitahuan di bagian bawah layar.
+
+
+Tugas 8 
+1. Jelaskan perbedaan antara Navigator.push() dan Navigator.pushReplacement(), disertai dengan contoh mengenai penggunaan kedua metode tersebut yang tepat!
+Navigator.push()
+
+-Navigator.push() digunakan untuk menavigasikan ke halaman baru di atas halaman saat ini.
+-Halaman baru ditumpuk di atas halaman sebelumnya dalam stack navigasi.
+-Pengguna dapat kembali ke halaman sebelumnya dengan menggunakan tombol back.
+-Cocok digunakan saat Anda ingin mempertahankan halaman sebelumnya dan mungkin kembali ke sana, seperti navigasi dari daftar produk ke detail produk.
+
+Navigator.pushReplacement()
+
+-Navigator.pushReplacement() digunakan untuk menavigasikan ke halaman baru sambil mengganti halaman saat ini dalam stack navigasi.
+-Halaman sebelumnya dihapus dari stack, sehingga pengguna tidak dapat kembali ke halaman itu.
+-Cocok digunakan saat Anda tidak ingin pengguna kembali ke halaman sebelumnya, seperti navigasi dari halaman login ke halaman beranda setelah berhasil masuk.
+
+2. Jelaskan masing-masing layout widget pada Flutter dan konteks penggunaannya masing-masing!
+
+Column dan Row
+Digunakan untuk membuat layout secara vertikal (Column) atau horizontal (Row).
+Cocok untuk menata elemen-elemen secara linear, seperti daftar atau toolbar.
+
+Stack
+Memungkinkan widget untuk ditumpuk di atas satu sama lain.
+Cocok untuk kasus overlay, seperti badge pada ikon atau posisi absolut.
+
+GridView
+Menampilkan widget dalam grid dua dimensi.
+Cocok untuk menampilkan koleksi item seperti galeri gambar atau grid produk.
+
+ListView
+Menampilkan daftar item yang bisa discroll.
+Cocok untuk daftar yang panjang dan dapat berubah ukurannya, seperti feed berita atau daftar email.
+
+Container
+Widget yang sangat customizable untuk dekorasi, padding, dan sizing.
+Serbaguna dan dapat digunakan hampir di mana saja untuk menambahkan spasi, warna, atau efek visual lainnya.
+
+Padding
+Memberikan padding (ruang dalam) ke sekitar widget lain.
+Cocok untuk memberikan jarak antar elemen dalam layout.
+
+Expanded dan Flexible
+Menentukan bagaimana child widget di dalam Row atau Column harus diukur dan ditempatkan.
+Expanded memaksa child mengisi ruang yang tersedia, sedangkan Flexible memberikan fleksibilitas dalam pembagian ruang.
+
+3. Sebutkan apa saja elemen input pada form yang kita pakai pada tugas kali ini dan jelaskan mengapa kita menggunakan elemen input tersebut!
+Elemen Input pada Form
+Pada tugas ini, elemen input yang digunakan adalah:
+
+TextFormField
+Digunakan untuk input teks, seperti nama produk, deskripsi, dll.
+Memungkinkan validasi input dan pengaturan keyboard yang sesuai.
+Alasan penggunaan: Untuk memungkinkan pengguna memasukkan teks seperti nama dan deskripsi produk.
+
+ElevatedButton
+Sebuah tombol yang digunakan untuk melakukan aksi seperti submit form.
+Alasan penggunaan: Untuk memungkinkan pengguna menyimpan data produk.
+
+4. Bagaimana penerapan clean architecture pada aplikasi Flutter?
+Penerapan Clean Architecture pada Aplikasi Flutter
+Clean Architecture mengacu pada pemisahan kode menjadi lapisan yang berbeda dengan masing-masing lapisan memiliki tanggung jawab spesifik. Ini meningkatkan modularitas, fleksibilitas, dan testability.
+
+Presentation Layer:
+Widget dan screen yang membentuk UI.
+Menggunakan ViewModel atau Controller untuk mengelola state.
+
+Business Logic Layer (BLL):
+Berisi logika bisnis, biasanya dalam bentuk UseCases atau Services.
+Memisahkan logika bisnis dari UI.
+
+Data Layer:
+Pengelolaan data, termasuk panggilan API, operasi database, dan penyimpanan lokal.
+Menggunakan Repository Pattern untuk abstraksi sumber data.
+
+Domain Layer:
+Mendefinisikan entitas dan aturan bisnis yang tidak bergantung pada implementasi spesifik.
+
+Dalam konteks Flutter, ini seringkali diimplementasikan dengan menggunakan package seperti Provider, Bloc, atau Riverpod untuk manajemen state dan injeksi dependensi, serta memisahkan interface dan implementasi dalam kode untuk memudahkan testing dan maintenance.
+
+5. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step! (bukan hanya sekadar mengikuti tutorial)
+
+- Menambahkan Drawer Menu untuk Navigasi
+Buka Proyek Flutter: Buka proyek Flutter yang sebelumnya telah kita kerjakan menggunakan IDE favoritmu (seperti Visual Studio Code atau Android Studio).
+
+Buat Berkas left_drawer.dart: Di dalam direktori lib, buat folder baru bernama widgets. Di dalam folder widgets ini, buat file baru dengan nama left_drawer.dart.
+
+Tambahkan Kode untuk Drawer: Di dalam file left_drawer.dart, tulis kode untuk membuat sebuah drawer. Kode ini harus mengandung Drawer widget yang di dalamnya ada ListView dengan DrawerHeader dan beberapa ListTile untuk navigasi.
+
+Tambahkan Navigasi ke Halaman Lain: Impor halaman yang ingin kita tambahkan ke dalam navigasi drawer, seperti MyHomePage dan ShopFormPage. Lalu, tambahkan ListTile untuk setiap halaman tersebut dengan metode navigasi yang sesuai.
+
+- Menambahkan Form dan Elemen Input
+Buat Berkas shoplist_form.dart: Di dalam direktori lib, buat file baru dengan nama shoplist_form.dart.
+
+Tambahkan Kode untuk Form: Tulis kode untuk membuat form, menggunakan widget Scaffold, AppBar, dan Form. Gunakan TextFormField untuk input field, dan ElevatedButton untuk tombol submit.
+
+Tambahkan Validasi dan Penanganan Submit: Di dalam setiap TextFormField, tambahkan validator untuk validasi input dan onChanged untuk mengupdate state. Pada ElevatedButton, tambahkan onPressed untuk menangani submit form.
+
+- Menambahkan Fitur Navigasi pada Tombol
+Modifikasi Widget ShopItem di menu.dart: Di dalam file menu.dart, tambahkan navigasi pada tombol dengan menggunakan Navigator.push atau Navigator.pushReplacement.
+
+- Refactoring File
+Buat Folder screens: Di dalam direktori lib, buat folder baru dengan nama screens.
+
+Pindahkan Berkas ke screens: Pindahkan semua berkas yang berkaitan dengan halaman (seperti shoplist_form.dart, menu.dart) ke dalam folder screens ini.
+
+Perbarui Impor: Perbarui semua impor di dalam proyekmu untuk mengakomodasi perubahan struktur folder.
+
+Buat shop_card.dart: Di dalam folder widgets, buat file baru shop_card.dart dan pindahkan kode terkait dengan ShopItem ke dalam file ini.
+
+Perbarui Impor di menu.dart: Di dalam file menu.dart, perbarui impor untuk ShopItem dari shop_card.dart.
