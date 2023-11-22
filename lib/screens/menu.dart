@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:inventorypbp/screens/list_product.dart';
 
 
 
@@ -88,12 +89,18 @@ class ShopCard extends StatelessWidget {
       color: item.color,
       child: InkWell(
         // Area responsive terhadap sentuhan
-        onTap: () {
+        onTap: () async {
           // Memunculkan SnackBar ketika diklik
           ScaffoldMessenger.of(context)
             ..hideCurrentSnackBar()
             ..showSnackBar(SnackBar(
                 content: Text("Kamu telah menekan tombol ${item.name}!")));
+
+
+                 if (item.name == "Lihat Produk") {
+        Navigator.push(context,
+            MaterialPageRoute(builder: (context) => const ProductPage()));
+      }
         },
         child: Container(
           // Container untuk menyimpan Icon dan Text

@@ -183,3 +183,81 @@ Perbarui Impor: Perbarui semua impor di dalam proyekmu untuk mengakomodasi perub
 Buat shop_card.dart: Di dalam folder widgets, buat file baru shop_card.dart dan pindahkan kode terkait dengan ShopItem ke dalam file ini.
 
 Perbarui Impor di menu.dart: Di dalam file menu.dart, perbarui impor untuk ShopItem dari shop_card.dart.
+
+
+
+TUGAS 7
+1. Apakah bisa kita melakukan pengambilan data JSON tanpa membuat model terlebih dahulu? Jika iya, apakah hal tersebut lebih baik daripada membuat model sebelum melakukan pengambilan data JSON?
+
+Ya, kita bisa melakukan pengambilan data JSON tanpa membuat model terlebih dahulu 1. Dalam hal ini, kita bisa langsung memanipulasi data JSON sebagai struktur data seperti dictionary atau list di Python, atau objek dan array di JavaScript.
+
+Misalnya, jika kita menggunakan Python, kita bisa menggunakan modul json untuk mengubah string JSON menjadi dictionary Python, lalu mengakses data tersebut seperti biasa.
+
+Namun, pendekatan ini memiliki beberapa kelemahan. Pertama, jika struktur data JSON sangat kompleks, bisa sulit untuk memahami dan memanipulasi data tersebut tanpa model. Kedua, tanpa model, kita tidak memiliki validasi atau autocompletion saat mengakses data, yang bisa meningkatkan kemungkinan kesalahan.
+
+Membuat model terlebih dahulu sebelum melakukan pengambilan data JSON dapat memudahkan proses pembacaan dan identifikasi bug 1. Dengan model, kita bisa membuat struktur data yang jelas dan mudah dipahami, serta mendapatkan manfaat seperti validasi dan autocompletion. Selain itu, jika kita perlu mengubah struktur data, kita hanya perlu mengubah modelnya, dan perubahan tersebut akan diterapkan ke seluruh kode kita.
+
+Jadi, meskipun memungkinkan untuk mengambil data JSON tanpa membuat model, biasanya lebih baik untuk membuat model terlebih dahulu, terutama jika kita bekerja dengan data yang kompleks atau besar.
+
+
+2. Jelaskan fungsi dari CookieRequest dan jelaskan mengapa instance CookieRequest perlu untuk dibagikan ke semua komponen di aplikasi Flutter.
+
+Fungsi: CookieRequest biasanya digunakan dalam konteks pengelolaan sesi pengguna dalam aplikasi Flutter yang berkomunikasi dengan server web seperti Django dan bisa saja termasuk fungsi untuk login, logout, dan pengiriman permintaan lain yang memerlukan pengelolaan cookie (seperti token autentikasi).
+
+Penggunaan di Aplikasi: Instansiasi CookieRequest biasanya dibagikan di seluruh aplikasi menggunakan Provider atau mekanisme manajemen state lainnya. Hal ini memudahkan pengelolaan sesi pengguna di seluruh aplikasi, memungkinkan komponen yang berbeda untuk mengakses data sesi pengguna atau mengirim permintaan yang autentikasi dengan mudah
+
+
+
+3. Jelaskan mekanisme pengambilan data dari JSON hingga dapat ditampilkan pada Flutter.
+
+Mekanisme Pengambilan Data JSON di Flutter:
+Pengambilan Data: Menggunakan http package untuk mengirim permintaan ke server. Data yang dikembalikan oleh server biasanya dalam format JSON.
+Parsing JSON: Menggunakan dart:convert untuk mengubah data JSON menjadi format yang dapat digunakan di Flutter (biasanya Map<String, dynamic> atau List<dynamic>).
+Penggunaan Data: Data yang telah diparsing kemudian digunakan untuk membangun UI atau diolah lebih lanjut sesuai kebutuhan aplikasi.
+
+
+4. Jelaskan mekanisme autentikasi dari input data akun pada Flutter ke Django hingga selesainya proses autentikasi oleh Django dan tampilnya menu pada Flutter.
+Input Data Akun: Pengguna memasukkan data akun (username dan password) di aplikasi Flutter.
+Pengiriman Data ke Django: Flutter mengirim data ini ke server Django melalui permintaan HTTP POST.
+Proses Autentikasi oleh Django: Django memproses data ini, melakukan verifikasi kredensial, dan mengembalikan respons (biasanya berupa token atau indikator status login).
+Respon ke Flutter dan Tampilan Menu: Flutter menerima respons, memprosesnya, dan jika autentikasi berhasil, navigasi ke halaman menu atau tampilan selanjutnya dilakukan.
+Widget yang Digunakan dalam Tugas Ini dan Fungsinya:
+MaterialApp: Widget yang membungkus sejumlah widget yang merupakan bagian dari Material Design.
+Scaffold: Menyediakan struktur dasar untuk layar di aplikasi Material Design.
+AppBar: Menampilkan bar aplikasi di bagian atas layar.
+TextField: Widget input teks untuk memasukkan username dan password.
+ElevatedButton: Tombol dengan desain Material, digunakan untuk melakukan aksi seperti submit form.
+Container: Widget untuk mengatur tata letak, padding, dan margin.
+Column: Mengatur anak-anaknya secara vertikal.
+SnackBar: Menampilkan pesan singkat di bagian bawah layar.
+AlertDialog: Menampilkan dialog ke pengguna, misalnya untuk pesan error.
+TextEditingController: Mengontrol teks yang ditampilkan dan dimasukkan dalam TextField.
+Provider: Mengelola state dan memungkinkan data atau objek dibagikan ke widget lain.
+5. 
+
+Buat File login.dart:
+Di folder screens, buat file baru login.dart.
+Isi dengan kode yang diberikan untuk membuat tampilan login.
+Ubah main.dart:
+Modifikasi MaterialApp di main.dart untuk menggunakan LoginPage() sebagai halaman awal.
+Implementasi Fetch Data dan Logout
+Fetch Data:
+Tambahkan dependensi http dengan flutter pub add http.
+Di file list_product.dart, implementasikan logika untuk fetch data dari Django. Gunakan http.get untuk mengirim request ke URL API Django dan konversikan response JSON menjadi objek Dart menggunakan model Product yang dibuat dari Quicktype.
+Implementasi Logout:
+Di inventory_card.dart, tambahkan logika untuk logout dengan mengubah onTap menjadi async dan menambahkan logika logout menggunakan CookieRequest.
+Integrasi Form Flutter dengan Django
+Implementasi Form di Flutter:
+Pada inventorylist_form.dart, tambahkan CookieRequest di build method.
+Ubah onPressed dari tombol submit untuk mengirim data ke Django menggunakan request.postJson.
+View dan URL di Django:
+Di Django, tambahkan view create_product_flutter di views.py.
+Tambahkan URL baru di urls.py yang mengarah ke view tersebut.
+Implementasi Logout di Django:
+Di views.py, buat metode view logout.
+Tambahkan path untuk logout di urls.py.
+Jalankan dan Uji Aplikasi
+Running dan Testing:
+Jalankan aplikasi Flutter.
+Coba login menggunakan UI yang baru dibuat.
+Lakukan pengujian untuk menambahkan produk baru, fetch data produk, dan logout.

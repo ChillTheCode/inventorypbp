@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-
+import 'package:inventorypbp/screens/list_product.dart';
 import 'package:inventorypbp/screens/menu.dart';
-
-
 import 'package:inventorypbp/screens/shoplist_form.dart';
 
 class LeftDrawer extends StatelessWidget {
@@ -14,7 +12,7 @@ class LeftDrawer extends StatelessWidget {
       child: ListView(
         children: [
     
-            //Bagian drawer header
+          
 
 
 
@@ -54,8 +52,7 @@ class LeftDrawer extends StatelessWidget {
           ),
 
 
-          //Bagian routing
-
+ 
 
 
 ListTile(
@@ -73,26 +70,26 @@ ListTile(
 ListTile(
   leading: const Icon(Icons.add_shopping_cart),
   title: const Text('Tambah Produk'),
-  // Bagian redirection ke ShopFormPage
+ 
   onTap: () {
               Navigator.pushReplacement(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => ShopFormPage(),
+                    builder: (context) => const ShopFormPage(),
                   ));
             },
 ),
+
 ListTile(
-  leading: const Icon(Icons.receipt_rounded),
-  title: const Text('Tambah Produk'),
-  // Bagian redirection ke ShopFormPage
-  onTap: () {
-              Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => ShopFormPage(),
-                  ));
-            },
+    leading: const Icon(Icons.shopping_basket),
+    title: const Text('Daftar Produk'),
+    onTap: () {
+    
+        Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => const ProductPage()),
+        );
+    },
 ),
 
 
