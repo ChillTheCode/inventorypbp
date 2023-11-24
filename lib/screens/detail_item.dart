@@ -2,25 +2,25 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:inventorypbp/models/product.dart';
-
 import 'package:inventorypbp/widgets/left_drawer.dart';
 
-class ProductPage extends StatefulWidget {
-    const ProductPage({Key? key}) : super(key: key);
+class DetailPage extends StatefulWidget {
+    const DetailPage({Key? key}) : super(key: key);
 
     @override
-    _ProductPageState createState() => _ProductPageState();
+    _DetailPageState createState() => _DetailPageState();
 }
 
-class _ProductPageState extends State<ProductPage> {
+class _DetailPageState extends State<DetailPage> {
 Future<List<Product>> fetchProduct() async {
-    // TODO: Ganti URL dan jangan lupa tambahkan trailing slash (/) di akhir URL!
+
     var url = Uri.parse(
         'http://127.0.0.1:8000/json/');
     var response = await http.get(
         url,
         headers: {"Content-Type": "application/json"},
     );
+    
 
     // melakukan decode response menjadi bentuk json
     var data = jsonDecode(utf8.decode(response.bodyBytes));

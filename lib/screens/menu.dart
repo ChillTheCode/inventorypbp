@@ -1,127 +1,67 @@
 import 'package:flutter/material.dart';
-import 'package:inventorypbp/screens/list_product.dart';
-
-
-
 import 'package:inventorypbp/widgets/left_drawer.dart';
-
-  import 'package:inventorypbp/screens/shoplist_form.dart';
+import 'package:inventorypbp/widgets/shop_card.dart';
 
 class MyHomePage extends StatelessWidget {
-    MyHomePage({Key? key}) : super(key: key);
-    final List<ShopItem> items = [
-    ShopItem("Lihat Produk", Icons.checklist, Colors.blue), // Tambahkan warna untuk Lihat Produk
-    ShopItem("Tambah Produk", Icons.add_shopping_cart, Colors.green), // Tambahkan warna untuk Tambah Produk
-    ShopItem("Logout", Icons.logout, Colors.red), // Tambahkan warna untuk Logout
-    ];
-    @override
-    Widget build(BuildContext context) {
-return Scaffold(
-  appBar: AppBar(
-    title: const Text(
-      'Inventory',
-    ),
-    backgroundColor: Color.fromARGB(255, 57, 237, 177),
-    foregroundColor: Colors.white,
-  ),
-  // Masukkan drawer sebagai parameter nilai drawer dari widget Scaffold
-  drawer: const LeftDrawer(),
-            body: SingleChildScrollView(
-                // Widget wrapper yang dapat discroll
-                child: Padding(
-                padding: const EdgeInsets.all(10.0), // Set padding dari halaman
-                child: Column(
-                    // Widget untuk menampilkan children secara vertikal
-                    children: <Widget>[
-                    const Padding(
-                        padding: EdgeInsets.only(top: 10.0, bottom: 10.0),
-                        // Widget Text untuk menampilkan tulisan dengan alignment center dan style yang sesuai
-                        child: Text(
-                        'PBP Shop', // Text yang menandakan toko
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                            fontSize: 30,
-                            fontWeight: FontWeight.bold,
-                        ),
-                        ),
-                    ),
-                    // Grid layout
-                    GridView.count(
-                        // Container pada card kita.
-                        primary: true,
-                        padding: const EdgeInsets.all(20),
-                        crossAxisSpacing: 10,
-                        mainAxisSpacing: 10,
-                        crossAxisCount: 3,
-                        shrinkWrap: true,
-                        children: items.map((ShopItem item) {
-                        // Iterasi untuk setiap item
-                        return ShopCard(item);
-                        }).toList(),
-                    ),
-                    ],
-                ),
-                ),
-            ),
-            );
-    }
-}
+  MyHomePage({Key? key}) : super(key: key);
 
-  
+  final List<TaskItem> items = [
+    TaskItem("Lihat Produk", Icons.checklist, Colors.blue),  // Blue color for Lihat Produk
+    TaskItem("Tambah Produk", Icons.add_shopping_cart, Colors.green),  // Green color for Tambah Produk
+    TaskItem("Logout", Icons.logout, Colors.red),  // Red color for Logout
+  ];
+  // This widget is the home page of your application. It is stateful, meaning
+  // that it has a State object (defined below) that contains fields that affect
+  // how it looks.
 
-
-class ShopItem {
-  final String name;
-  final IconData icon;
-  final Color color; // Tambahkan properti color
-
-  ShopItem(this.name, this.icon, this.color);
-}
-
-class ShopCard extends StatelessWidget {
-  final ShopItem item;
-
-  const ShopCard(this.item, {super.key}); // Constructor
+  // This class is the configuration for the state. It holds the values (in this
+  // case the title) provided by the parent (in this case the App widget) and
+  // used by the build method of the State. Fields in a Widget subclass are
+  // always marked "final".
 
   @override
   Widget build(BuildContext context) {
-    return Material(
-      color: item.color,
-      child: InkWell(
-        // Area responsive terhadap sentuhan
-        onTap: () async {
-          // Memunculkan SnackBar ketika diklik
-          ScaffoldMessenger.of(context)
-            ..hideCurrentSnackBar()
-            ..showSnackBar(SnackBar(
-                content: Text("Kamu telah menekan tombol ${item.name}!")));
-
-
-                 if (item.name == "Lihat Produk") {
-        Navigator.push(context,
-            MaterialPageRoute(builder: (context) => const ProductPage()));
-      }
-        },
-        child: Container(
-          // Container untuk menyimpan Icon dan Text
-          padding: const EdgeInsets.all(8),
-          child: Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Icon(
-                  item.icon,
-                  color: Colors.white,
-                  size: 30.0,
-                ),
-                const Padding(padding: EdgeInsets.all(3)),
-                Text(
-                  item.name,
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text(
+          'Menu List',
+        ),
+      ),
+      drawer: const LeftDrawer(),
+      body: SingleChildScrollView(
+        // Widget wrapper yang dapat discroll
+        child: Padding(
+          padding: const EdgeInsets.all(10.0), // Set padding dari halaman
+          child: Column(
+            // Widget untuk menampilkan children secara vertikal
+            children: <Widget>[
+              const Padding(
+                padding: EdgeInsets.only(top: 10.0, bottom: 10.0),
+                // Widget Text untuk menampilkan tulisan dengan alignment center dan style yang sesuai
+                child: Text(
+                  'Winster', // Text yang menandakan toko
                   textAlign: TextAlign.center,
-                  style: const TextStyle(color: Colors.white),
+                  style: TextStyle(
+                    fontSize: 30,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
-              ],
-            ),
+              ),
+              // Grid layout
+              GridView.count(
+                // Container pada card kita.
+                primary: true,
+                padding: const EdgeInsets.all(20),
+                crossAxisSpacing: 10,
+                mainAxisSpacing: 10,
+                crossAxisCount: 3,
+                shrinkWrap: true,
+                children: items.map((TaskItem item) {
+                  // Iterasi untuk setiap item
+                  return TaskCard(item);
+                }).toList(),
+              ),
+            ],
           ),
         ),
       ),
