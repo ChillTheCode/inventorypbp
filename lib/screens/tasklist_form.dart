@@ -94,7 +94,7 @@ class _FormPageState extends State<FormPage> {
                       child: TextFormField(
                         decoration: InputDecoration(
                           hintText: "Jumlah",
-                          labelText: "jumlah",
+                          labelText: "Jumlah",
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(5.0),
                           ),
@@ -109,7 +109,7 @@ class _FormPageState extends State<FormPage> {
                             return "Jumlah tidak boleh kosong!";
                           }
                           if (int.tryParse(value) == null) {
-                            return "jumlah harus berupa angka!";
+                            return "Jumlah harus berupa angka!";
                           }
                           return null;
                         },

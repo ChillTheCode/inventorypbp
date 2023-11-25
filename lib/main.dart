@@ -4,6 +4,7 @@ import 'package:pbp_django_auth/pbp_django_auth.dart';
 import 'package:inventorypbp/screens/login.dart';
 import 'package:inventorypbp/screens/menu.dart';
 
+
 void main() {
   runApp(const MyApp());
 }
