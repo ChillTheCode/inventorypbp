@@ -186,7 +186,7 @@ Perbarui Impor di menu.dart: Di dalam file menu.dart, perbarui impor untuk ShopI
 
 
 
-TUGAS 7
+TUGAS 9
 1. Apakah bisa kita melakukan pengambilan data JSON tanpa membuat model terlebih dahulu? Jika iya, apakah hal tersebut lebih baik daripada membuat model sebelum melakukan pengambilan data JSON?
 
 Ya, kita bisa melakukan pengambilan data JSON tanpa membuat model terlebih dahulu 1. Dalam hal ini, kita bisa langsung memanipulasi data JSON sebagai struktur data seperti dictionary atau list di Python, atau objek dan array di JavaScript.
