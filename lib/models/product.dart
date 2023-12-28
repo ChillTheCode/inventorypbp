@@ -7,8 +7,8 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
-import 'package:inventorypbp/models/product.dart';
-import 'package:inventorypbp/widgets/left_drawer.dart';
+import 'package:bookstagram/models/product.dart';
+import 'package:bookstagram/widgets/left_drawer.dart';
 
 List<Product> productFromJson(String str) => List<Product>.from(json.decode(str).map((x) => Product.fromJson(x)));
 
